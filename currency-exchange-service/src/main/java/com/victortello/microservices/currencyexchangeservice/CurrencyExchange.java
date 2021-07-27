@@ -2,38 +2,43 @@ package com.victortello.microservices.currencyexchangeservice;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class CurrencyExchange {
 
+    @Id
     private Long id;
+    @Column(name="currency_from")
     private String from;
+    @Column(name="currency_to")
     private String to;
-    private BigDecimal conversionMulitple;
-    private String enviroment;
+    private BigDecimal conversionMultlple;
+    private String environment;
+
 
     public CurrencyExchange() {
     }
 
-    public CurrencyExchange(Long id, String from, String to, BigDecimal conversionMulitple) {
-        this.setId(id);
-        this.setFrom(from);
-        this.setTo(to);
-        this.setConversionMulitple(conversionMulitple);
-    }
+    
 
-    public BigDecimal getConversionMulitple() {
-        return conversionMulitple;
-    }
-
-    public void setConversionMulitple(BigDecimal conversionMulitple) {
-        this.conversionMulitple = conversionMulitple;
-    }
-
-    public String getTo() {
-        return to;
-    }
-
-    public void setTo(String to) {
+    public CurrencyExchange(Long id, String from, String to, BigDecimal conversionMultlple) {
+        this.id = id;
+        this.from = from;
         this.to = to;
+        this.conversionMultlple = conversionMultlple;        
+    }
+
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFrom() {
@@ -44,20 +49,30 @@ public class CurrencyExchange {
         this.from = from;
     }
 
-    public Long getId() {
-        return id;
+    public String getTo() {
+        return to;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setTo(String to) {
+        this.to = to;
     }
 
-    public String getEnviroment() {
-        return enviroment;
+    public BigDecimal getConversionMultlple() {
+        return conversionMultlple;
     }
 
-    public void setEnviroment(String enviroment) {
-        this.enviroment = enviroment;
+    public String getEnvironment() {
+        return environment;
     }
+
+    public void setEnvironment(String environment) {
+        this.environment = environment;
+    }
+
+    public void setConversionMultlple(BigDecimal conversionMultlple) {
+        this.conversionMultlple = conversionMultlple;
+    }
+
+    
 
 }

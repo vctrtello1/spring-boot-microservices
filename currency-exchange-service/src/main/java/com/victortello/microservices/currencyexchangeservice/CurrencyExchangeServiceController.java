@@ -19,7 +19,7 @@ public class CurrencyExchangeServiceController {
         CurrencyExchange currencyExchange = new CurrencyExchange(1000L, from, to, BigDecimal.valueOf(50));
 
         String port = environment.getProperty("local.server.port");
-        currencyExchange.setEnviroment(port);
+        currencyExchange.setEnvironment(port);
         return currencyExchange;
     }    
 }

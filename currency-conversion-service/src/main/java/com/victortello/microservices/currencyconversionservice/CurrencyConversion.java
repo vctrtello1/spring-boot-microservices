@@ -7,23 +7,32 @@ public class CurrencyConversion {
     private Long id;
     private String from;
     private String to;
-    private BigDecimal conversionMultiple;
     private BigDecimal quantity;
+    private BigDecimal conversionMultlple;
     private BigDecimal totalCalculatedAmount;
     private String environment;
 
     public CurrencyConversion() {
     }
 
-    public CurrencyConversion(Long id, String from, String to, BigDecimal quantity, BigDecimal conversionMultiple,
+    public CurrencyConversion(Long id, String from, String to, BigDecimal quantity, BigDecimal conversionMultlple,
             BigDecimal totalCalculatedAmount, String environment) {
-        this.setId(id);
-        this.setFrom(from);
-        this.setTo(to);
-        this.setConversionMultiple(conversionMultiple);
-        this.setQuantity(quantity);
-        this.setTotalCalculatedAmount(totalCalculatedAmount);
-        this.setEnvironment(environment);
+        this.id = id;
+        this.from = from;
+        this.to = to;
+        this.quantity = quantity;
+        this.conversionMultlple = conversionMultlple;
+        this.totalCalculatedAmount = totalCalculatedAmount;
+        this.environment = environment;
+    }
+ 
+
+    public BigDecimal getConversionMultlple() {
+        return conversionMultlple;
+    }
+
+    public void setConversionMultlple(BigDecimal conversionMultlple) {
+        this.conversionMultlple = conversionMultlple;
     }
 
     public String getEnvironment() {
@@ -50,13 +59,6 @@ public class CurrencyConversion {
         this.quantity = quantity;
     }
 
-    public BigDecimal getConversionMultiple() {
-        return conversionMultiple;
-    }
-
-    public void setConversionMultiple(BigDecimal conversionMultiple) {
-        this.conversionMultiple = conversionMultiple;
-    }
 
     public String getTo() {
         return to;
@@ -80,6 +82,14 @@ public class CurrencyConversion {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public BigDecimal getConversionMultiple() {
+        return conversionMultlple;
+    }
+
+    public void setConversionMultiple(BigDecimal conversionMultlple) {
+        this.conversionMultlple = conversionMultlple;
     }
 
 }

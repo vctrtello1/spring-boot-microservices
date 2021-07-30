@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class CurrencyExchangeServiceController {
+public class CurrencyExchangeController {
 
-    private Logger logger = LoggerFactory.getLogger(CurrencyExchangeServiceController.class);
+    private Logger logger = LoggerFactory.getLogger(CurrencyExchangeController.class);
 
     @Autowired
     private CurrencyExchangeRepository currencyExchangeRepository;
@@ -31,7 +31,10 @@ public class CurrencyExchangeServiceController {
         }
 
         String port = environment.getProperty("local.server.port");
-        currencyExchange.setEnvironment(port);
+        String host = environment.getProperty("HOSTNAME");
+        String version = "v11";
+
+        currencyExchange.setEnvironment(port + " " + version + " " + host);
         return currencyExchange;
     }
 }

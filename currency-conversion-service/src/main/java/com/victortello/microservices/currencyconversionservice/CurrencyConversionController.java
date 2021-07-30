@@ -3,6 +3,8 @@ package com.victortello.microservices.currencyconversionservice;
 import java.math.BigDecimal;
 import java.util.HashMap;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,12 +15,16 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class CurrencyConversionController {
 
+        private Logger logger = LoggerFactory.getLogger(CurrencyConversionController.class);
+
         @Autowired
         private CurrencyExchangeProxy proxy;
 
         @GetMapping("/currency-conversion/from/{from}/to/{to}/quantity/{quantity}")
         public CurrencyConversion calculateCurrencyConversion(@PathVariable String from, @PathVariable String to,
                         @PathVariable BigDecimal quantity) {
+
+                logger.info("calculateCurrencyConversionFeign called with {} to {} with {}", from, to, quantity);
 
                 HashMap<String, String> uriVariables = new HashMap<>();
                 uriVariables.put("from", from);
@@ -40,12 +46,13 @@ public class CurrencyConversionController {
         public CurrencyConversion calculateCurrencyConversionFeign(@PathVariable String from, @PathVariable String to,
                         @PathVariable BigDecimal quantity) {
 
+                logger.info("calculateCurrencyConversion called with {} to {} with {}", from, to, quantity);
+
                 HashMap<String, String> uriVariables = new HashMap<>();
                 uriVariables.put("from", from);
                 uriVariables.put("to", to);
-                
+
                 CurrencyConversion currencyConversion = proxy.retrieveExchangeValue(from, to);
-                
 
                 return new CurrencyConversion(currencyConversion.getId(), from, to, quantity,
                                 currencyConversion.getConversionMultiple(),

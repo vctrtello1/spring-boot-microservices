@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2021-08-01T22:15:16Z"
+  labels:
+    app: currency-conversion
+  name: currency-conversion
+  namespace: default
+  resourceVersion: "266109"
+  uid: 5a3eecf7-4f0d-46e3-8605-02c09e2fe8ee
+spec:
+  clusterIP: 10.107.138.230
+  clusterIPs:
+  - 10.107.138.230
+  externalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - nodePort: 31219
+    port: 8100
+    protocol: TCP
+    targetPort: 8100
+  selector:
+    app: currency-conversion
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - hostname: localhost

@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"creationTimestamp":"2021-07-30T15:51:57Z","labels":{"app":"currency-exchange"},"name":"currency-exchange","namespace":"default","resourceVersion":"192841","uid":"e89baccd-aa65-4031-95f9-04b276fe1f07"},"spec":{"clusterIP":"10.101.55.229","clusterIPs":["10.101.55.229"],"externalTrafficPolicy":"Cluster","ipFamilies":["IPv4"],"ipFamilyPolicy":"SingleStack","ports":[{"nodePort":31189,"port":8000,"protocol":"TCP","targetPort":8000}],"selector":{"app":"currency-exchange"},"sessionAffinity":"None","type":"LoadBalancer"},"status":{"loadBalancer":{"ingress":[{"hostname":"localhost"}]}}}
+  creationTimestamp: "2021-07-30T15:51:57Z"
+  labels:
+    app: currency-exchange
+  name: currency-exchange
+  namespace: default
+  resourceVersion: "200645"
+  uid: e89baccd-aa65-4031-95f9-04b276fe1f07
+spec:
+  clusterIP: 10.101.55.229
+  clusterIPs:
+  - 10.101.55.229
+  externalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - nodePort: 31189
+    port: 8000
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    app: currency-exchange
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - hostname: localhost

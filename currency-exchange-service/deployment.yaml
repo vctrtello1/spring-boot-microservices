@@ -3,17 +3,19 @@ kind: Deployment
 metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"deployment.kubernetes.io/revision":"1"},"creationTimestamp":"2021-07-30T15:50:51Z","generation":3,"labels":{"app":"currency-exchange"},"name":"currency-exchange","namespace":"default","resourceVersion":"259079","uid":"53a27e6b-9201-4b47-a80f-2b9d268e8588"},"spec":{"progressDeadlineSeconds":600,"replicas":1,"revisionHistoryLimit":10,"selector":{"matchLabels":{"app":"currency-exchange"}},"strategy":{"rollingUpdate":{"maxSurge":"25%","maxUnavailable":"25%"},"type":"RollingUpdate"},"template":{"metadata":{"creationTimestamp":null,"labels":{"app":"currency-exchange"}},"spec":{"containers":[{"image":"vctrtello1/microservices-currency-exchange-service:0.0.11-SNAPSHOT","imagePullPolicy":"IfNotPresent","name":"microservices-currency-exchange-service","resources":{},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File"}],"dnsPolicy":"ClusterFirst","restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"terminationGracePeriodSeconds":30}}},"status":{"availableReplicas":1,"conditions":[{"lastTransitionTime":"2021-07-30T15:50:51Z","lastUpdateTime":"2021-07-30T15:50:55Z","message":"ReplicaSet \"currency-exchange-747564467c\" has successfully progressed.","reason":"NewReplicaSetAvailable","status":"True","type":"Progressing"},{"lastTransitionTime":"2021-08-01T20:38:53Z","lastUpdateTime":"2021-08-01T20:38:53Z","message":"Deployment has minimum availability.","reason":"MinimumReplicasAvailable","status":"True","type":"Available"}],"observedGeneration":3,"readyReplicas":1,"replicas":3,"updatedReplicas":1}}
   creationTimestamp: "2021-07-30T15:50:51Z"
-  generation: 1
+  generation: 4
   labels:
     app: currency-exchange
   name: currency-exchange
   namespace: default
-  resourceVersion: "195074"
+  resourceVersion: "260094"
   uid: 53a27e6b-9201-4b47-a80f-2b9d268e8588
 spec:
   progressDeadlineSeconds: 600
-  replicas: 1
+  replicas: 3
   revisionHistoryLimit: 10
   selector:
     matchLabels:
@@ -50,48 +52,13 @@ status:
     reason: NewReplicaSetAvailable
     status: "True"
     type: Progressing
-  - lastTransitionTime: "2021-07-30T16:39:51Z"
-    lastUpdateTime: "2021-07-30T16:39:51Z"
+  - lastTransitionTime: "2021-08-01T20:38:53Z"
+    lastUpdateTime: "2021-08-01T20:38:53Z"
     message: Deployment has minimum availability.
     reason: MinimumReplicasAvailable
     status: "True"
     type: Available
-  observedGeneration: 1
+  observedGeneration: 4
   readyReplicas: 1
-  replicas: 3
+  replicas: 1
   updatedReplicas: 1
-
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  creationTimestamp: "2021-07-30T15:51:57Z"
-  labels:
-    app: currency-exchange
-  name: currency-exchange
-  namespace: default
-  resourceVersion: "192841"
-  uid: e89baccd-aa65-4031-95f9-04b276fe1f07
-spec:
-  clusterIP: 10.101.55.229
-  clusterIPs:
-  - 10.101.55.229
-  externalTrafficPolicy: Cluster
-  ipFamilies:
-  - IPv4
-  ipFamilyPolicy: SingleStack
-  ports:
-  - nodePort: 31189
-    port: 8000
-    protocol: TCP
-    targetPort: 8000
-  selector:
-    app: currency-exchange
-  sessionAffinity: None
-  type: LoadBalancer
-status:
-  loadBalancer:
-    ingress:
-    - hostname: localhost
